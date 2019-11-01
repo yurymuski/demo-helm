@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<p>TEST_VAR=</p>
+<p>TEST_SECRET=</p>
+
+<input type="button" onClick="get_image()" value="Display Random Image">
+<p></p>
+<img name="canvas" width="500"/>
+
+<script>
+var images = [
+"http://giphygifs.s3.amazonaws.com/media/K08v521HjExfa/giphy.gif",
+"http://giphygifs.s3.amazonaws.com/media/tkYpAbKdWj4TS/giphy.gif",
+"http://giphygifs.s3.amazonaws.com/media/cMq7gwTNX4jTO/giphy.gif",
+"http://giphygifs.s3.amazonaws.com/media/Gf3fU0qPtI6uk/giphy.gif"
+
+ ];
+
+ function get_image(){
+    var num = Math.floor(Math.random() * (images.length));
+    document.canvas.src=images[num];
+}
+</script>
+
+</body>
+</html> 

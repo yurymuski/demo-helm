@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<p>ERROR</p>
+
+<input type="button" onClick="get_image()" value="Display Random Image">
+<p></p>
+<img name="canvas" width="500"/>
+
+<script>
+var images = [
+"https://media.giphy.com/media/QXP3yQAPfKct5kx3Zv/giphy.gif",
+"https://media.giphy.com/media/wnAsnQtnzqHU4/giphy.gif",
+"https://media.giphy.com/media/XzYY9fZM6sNFe/giphy.gif",
+"https://media.giphy.com/media/Z1BTGhofioRxK/giphy.gif"
+ ];
+
+ function get_image(){
+    var num = Math.floor(Math.random() * (images.length));
+    document.canvas.src=images[num];
+}
+</script>
+
+</body>
+</html> 
