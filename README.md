@@ -18,7 +18,23 @@ docker run --rm -e TEST_VAR=test -p 8080:80 ymuski/helm-demo-app:v2
 ---
   - ### Helm installing
 
-    - some instructions
+    - add k8s configs to ~/.kube/config
+    - install helm binary
+      - mac:
+        ```
+        wget -P /tmp/helm https://get.helm.sh/helm-v2.14.3-darwin-amd64.tar.gz
+        tar -C /tmp/helm -zxvf /tmp/helm/helm-v2.14.3-darwin-amd64.tar.gz
+        mv /tmp/helm/darwin-amd64/helm /usr/local/bin/helm
+        rm -rf /tmp/helm
+        ```
+      - linux:
+        ```
+        wget -P /tmp/helm https://get.helm.sh/helm-v2.14.3-linux-amd64.tar.gz
+        tar -C /tmp/helm -zxvf /tmp/helm/helm-v2.14.3-linux-amd64.tar.gz
+        mv /tmp/helm/linux-amd64/helm /usr/local/bin/helm
+        rm -rf /tmp/helm
+        ```
+    - `helm init --service-account tiller --history-max 20 --client-only`
 
 ---
   - ### Helm creating chart
