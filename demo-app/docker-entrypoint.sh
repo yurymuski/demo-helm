@@ -12,11 +12,8 @@ then
   sed "s/TEST_SECRET=/TEST_SECRET=$TEST_SECRET/g" -i /usr/share/nginx/html/index.html
 fi
 
-#Emulate that app starts up for 15 seconds
-nc -l 80 &
-sleep 15;
-echo 'killing nc'
-killall nc
+#Emulate that app starts up for 5 seconds
+sleep 5;
 
 exec nginx -g 'daemon off;'
 
