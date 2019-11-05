@@ -22,7 +22,8 @@ docker run --rm -e TEST_VAR=test -p 8080:80 ymuski/helm-demo-app:v2
     - install helm binary
       - mac:
         ```
-        wget -P /tmp/helm https://get.helm.sh/helm-v2.14.3-darwin-amd64.tar.gz
+        mkdir /tmp/helm
+        curl -o /tmp/helm/helm-v2.14.3-darwin-amd64.tar.gz https://get.helm.sh/helm-v2.14.3-darwin-amd64.tar.gz
         tar -C /tmp/helm -zxvf /tmp/helm/helm-v2.14.3-darwin-amd64.tar.gz
         mv /tmp/helm/darwin-amd64/helm /usr/local/bin/helm
         rm -rf /tmp/helm
@@ -52,7 +53,7 @@ docker run --rm -e TEST_VAR=test -p 8080:80 ymuski/helm-demo-app:v2
         ```
         ingress:
           enabled: true
-          annotations: {}
+          annotations:
             kubernetes.io/ingress.class: nginx
             # kubernetes.io/tls-acme: "true"
           hosts:
@@ -143,8 +144,6 @@ docker run --rm -e TEST_VAR=test -p 8080:80 ymuski/helm-demo-app:v2
           - `helm status helm-demo-chart-YOUR_NAME`
           - `helm history helm-demo-chart-YOUR_NAME`
 
-          Note: 2 Deployed releases.
-
           Rollback last one:
           - `helm rollback helm-demo-chart-YOUR_NAME 0`
           - `helm status helm-demo-chart-YOUR_NAME`
@@ -201,9 +200,6 @@ docker run --rm -e TEST_VAR=test -p 8080:80 ymuski/helm-demo-app:v2
             type: Opaque
             data:
             {{- range $key, $value := .Values.containers.secrets }}
-              {{ $key }}: {{ $value | quote }}
-            {{- end }}
-            {{- range $key, $value := .Values.containers.extraSecrets }}
               {{ $key }}: {{ $value | quote }}
             {{- end }}
             ```
