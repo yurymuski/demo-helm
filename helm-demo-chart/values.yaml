@@ -23,20 +23,20 @@ ingress:
     kubernetes.io/ingress.class: nginx
     # kubernetes.io/tls-acme: "true"
   hosts:
-    - host: helm-demo-app-YOUR_NAME.DOMAIN
+    - host: helm-demo-app-ymuski.DOMAIN
       paths:
       - /
   tls:
    - secretName: DOMAIN-tls
      hosts:
-       - helm-demo-app-YOUR_NAME.DOMAIN
+       - helm-demo-app-ymuski.DOMAIN
 
 containers:
   env:
     TEST_VAR: "hello_var"
 
-  #echo -n text | base64 -w 0
-  #echo -n encryped | base64 --decode
+  #echo -n text | base64
+  #echo -n dGV4dA== | base64 --decode
   secrets:
     TEST_SECRET: c3VwZXJfc2VjcmV0
 

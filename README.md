@@ -44,6 +44,8 @@ docker run --rm -e TEST_VAR=test -p 8080:80 ymuski/helm-demo-app:v2
 
     - `cd helm-demo-chart`
 
+    - update YOUR_NAME and DOMAIN to actual values.
+
     - edit `values.yaml`
         ```
         image:
@@ -236,6 +238,19 @@ docker run --rm -e TEST_VAR=test -p 8080:80 ymuski/helm-demo-app:v2
           - `helm upgrade --install helm-demo-chart-YOUR_NAME helm-demo-chart/ --debug`
           - `helm status helm-demo-chart-YOUR_NAME`
           - go to ingress url
+
+      - ## Helm dependencies
+        - requirements.yaml
+          ```
+          dependencies:
+            - name: mysql
+              version: 1.4.0
+              repository: "@stable"
+          ```
+        - deploy #7
+          - `helm dependency update helm-demo-chart/`
+          - `helm upgrade --install helm-demo-chart-YOUR_NAME helm-demo-chart/ --debug --set mysql.persistence.storageClass=local-path,mysql.persistence.size=1Gi`
+          - `helm status helm-demo-chart-YOUR_NAME`
 
       - ## clean up
         - `helm del --purge helm-demo-chart-YOUR_NAME`
