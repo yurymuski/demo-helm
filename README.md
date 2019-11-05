@@ -207,8 +207,8 @@ docker run --rm -e TEST_VAR=test -p 8080:80 ymuski/helm-demo-app:v2
           - values.yaml
             ```
             containers:
-              #echo -n text | base64 -w 0
-              #echo -n encryped | base64 --decode
+              #echo -n text | base64
+              #echo -n dGV4dA== | base64 --decode
               secrets:
                 TEST_SECRET: c3VwZXJfc2VjcmV0
             ```
