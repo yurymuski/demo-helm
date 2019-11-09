@@ -42,8 +42,6 @@ docker run --rm -e TEST_VAR=test -p 8080:80 ymuski/helm-demo-app:v2
 
 - `helm create helm-demo-chart`
 
-- `cd helm-demo-chart`
-
 - update YOUR_NAME and DOMAIN to actual values.
 
 - edit `values.yaml`
